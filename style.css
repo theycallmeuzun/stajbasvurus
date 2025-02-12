@@ -1,0 +1,392 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: #1a1a1a;
+    font-family: 'Playfair Display', serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 40px;
+    font-size: 3.5em;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 40px;
+    max-width: 1000px;
+    margin: 0 auto 30px auto;
+    position: relative;
+    background: #000000;
+}
+
+.gallery::before,
+.gallery::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 35px;
+    background: repeating-linear-gradient(
+        transparent 0px,
+        transparent 9px,
+        #333 9px,
+        #333 10px,
+        transparent 10px,
+        transparent 14px,
+        #222 14px,
+        #222 19px
+    );
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+}
+
+.gallery::before {
+    left: 0;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.gallery::after {
+    right: 0;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.photo-container {
+    position: relative;
+    width: 100%;
+    min-height: 700px;
+    padding: 15px 0;
+    background: #000000;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.photo-container::before,
+.photo-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 35px;
+    background: repeating-linear-gradient(
+        transparent 0px,
+        transparent 9px,
+        #333 9px,
+        #333 10px,
+        transparent 10px,
+        transparent 14px,
+        #222 14px,
+        #222 19px
+    );
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+}
+
+.photo-container::before {
+    left: -35px;
+}
+
+.photo-container::after {
+    right: -35px;
+}
+
+img {
+    width: auto;
+    height: auto;
+    max-width: calc(100% - 40px);
+    max-height: 650px;
+    object-fit: contain;
+    border-radius: 5px;
+    border: 2px solid #333;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Zarf Stilleri */
+.envelope-container {
+    position: relative;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    perspective: 1000px;
+}
+
+.envelope {
+    font-size: 6em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    animation: float 2s ease-in-out infinite;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+    padding: 20px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.envelope:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+.letter {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: linear-gradient(45deg, #fff9f9, #fff);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    opacity: 0;
+    transition: all 0.5s ease;
+    width: 90%;
+    max-width: 600px;
+    z-index: 1000;
+}
+
+.letter.active {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.letter-content {
+    font-family: 'Dancing Script', cursive;
+    color: #ff6b6b;
+    text-align: left;
+}
+
+.letter-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #ff4b4b;
+}
+
+.letter-content p {
+    font-size: 1.6em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.message {
+    margin-top: 15px;
+    color: #ff6b6b;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6em;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    line-height: 1.4;
+    padding: 10px 0;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+.floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.music-control {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    z-index: 1000;
+}
+
+.music-button {
+    background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1em;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.music-button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(45deg, #ff8e8e, #ff6b6b);
+}
+
+.music-button:active {
+    transform: translateY(1px);
+}
+
+.music-button .icon {
+    font-size: 1.4em;
+}
+
+/* Mobil Uyumluluk için Media Queries */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+        padding: 0 15px;
+        margin-bottom: 20px;
+    }
+
+    .gallery {
+        padding: 20px;
+    }
+
+    .gallery::before,
+    .gallery::after {
+        width: 25px;
+    }
+
+    .photo-container {
+        min-height: 400px;
+        padding: 10px 0;
+    }
+
+    .photo-container::before,
+    .photo-container::after {
+        width: 25px;
+    }
+
+    .photo-container::before {
+        left: -25px;
+    }
+
+    .photo-container::after {
+        right: -25px;
+    }
+
+    img {
+        max-height: 400px;
+    }
+
+    .message {
+        font-size: 1.3em;
+        padding: 5px 10px;
+    }
+
+    .music-control {
+        left: 15px;
+        bottom: 15px;
+    }
+
+    .music-button {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+}
+
+/* Daha küçük ekranlar için ek düzenlemeler */
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    .gallery {
+        padding: 15px;
+    }
+
+    .gallery::before,
+    .gallery::after {
+        width: 20px;
+    }
+
+    .photo-container {
+        min-height: 300px;
+        padding: 8px 0;
+    }
+
+    .photo-container::before,
+    .photo-container::after {
+        width: 20px;
+    }
+
+    .photo-container::before {
+        left: -20px;
+    }
+
+    .photo-container::after {
+        right: -20px;
+    }
+
+    img {
+        max-height: 300px;
+    }
+
+    .message {
+        font-size: 1.2em;
+    }
+
+    .music-control {
+        left: 10px;
+        bottom: 10px;
+    }
+
+    .music-button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+}
+
+/* Yatay mod için düzenlemeler */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+
+    img {
+        max-height: 70vh;
+    }
+
+    .gallery {
+        gap: 15px;
+    }
+
+    .message {
+        font-size: 1.1em;
+        padding: 5px;
+    }
+} 
